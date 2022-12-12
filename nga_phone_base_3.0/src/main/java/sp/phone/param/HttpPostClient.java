@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Locale;
 
 import gov.anzong.androidnga.BuildConfig;
+import sp.phone.util.ForumUtils;
 import sp.phone.util.NLog;
 
 public class HttpPostClient {
@@ -13,10 +14,12 @@ public class HttpPostClient {
             .getSimpleName();
     private String urlString;
     private String cookie;
+
     public HttpPostClient(String urlString) {
         this.urlString = urlString;
         cookie = null;
     }
+
     public HttpPostClient(String urlString, String cookie) {
         this.urlString = urlString;
         this.cookie = cookie;
@@ -59,7 +62,14 @@ public class HttpPostClient {
             if (cookie != null)
                 conn.setRequestProperty("Cookie", cookie);
             conn.setInstanceFollowRedirects(false);
-
+            String ip = ForumUtils.getAvailableIP();
+            if (ip.length() > 1) {
+                conn.setRequestProperty("X-Forwarded-For", ip);
+                conn.setRequestProperty("X-Originating-IP", ip);
+                conn.setRequestProperty("X-Remote-Addr", ip);
+                conn.setRequestProperty("X-Remote-IP", ip);
+                conn.setRequestProperty("Cdn-Src-Ip", ip);
+            }
             conn.setRequestProperty("User-Agent", USER_AGENT);
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conn.setRequestProperty("Content-Length", String.valueOf(body.length()));
