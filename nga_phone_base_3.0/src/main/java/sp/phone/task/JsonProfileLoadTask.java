@@ -192,5 +192,8 @@ public class JsonProfileLoadTask {
         ret.setSign(StringUtils.isEmpty(sign) ? "无签名" : sign);
 
         ret.setAvatarUrl(obj.getString(PreferenceKey.PREFERENCE_AVATAR));
+
+        String ipIoc = obj.getString("ipLoc");
+        ret.setIpLoc(StringUtils.isEmpty(ipIoc) ? defaultValue : ipIoc);
     }
 }

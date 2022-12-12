@@ -113,6 +113,10 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
     @BindView(R.id.wv_sign)
     public WebViewEx mSignWebView;
 
+    @BindView(R.id.tv_user_ip)
+    public TextView mUserIpTV;
+
+
     private JsonProfileLoadTask mProfileLoadTask;
 
     private Menu mOptionMenu;
@@ -207,6 +211,7 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
         mUserEmailTv.setText(profileInfo.getEmailAddress());
         mUserTelTv.setText(profileInfo.getPhoneNumber());
         mUserGroupTv.setText(profileInfo.getMemberGroup());
+        mUserIpTV.setText(profileInfo.getIpLoc());
         if (mCurrentUser) {
             mModifySignBtn.setVisibility(View.VISIBLE);
         } else {
