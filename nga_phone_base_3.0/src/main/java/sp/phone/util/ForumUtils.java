@@ -19,6 +19,13 @@ public class ForumUtils {
         return context.getResources().getStringArray(R.array.nga_domain)[index];
     }
 
+    public static String getAvailableIP() {
+        Context context = ContextUtils.getContext();
+        SharedPreferences sp = context.getSharedPreferences(PreferenceKey.PERFERENCE, Context.MODE_PRIVATE);
+        String  ip = sp.getString(PreferenceKey.KEY_NGA_IP, "0");
+        return ip;
+    }
+
     public static String getAvailableDomainNoHttp() {
         Context context = ContextUtils.getContext();
         SharedPreferences sp = context.getSharedPreferences(PreferenceKey.PERFERENCE, Context.MODE_PRIVATE);

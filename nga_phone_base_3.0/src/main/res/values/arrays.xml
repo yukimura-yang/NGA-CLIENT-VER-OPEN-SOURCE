@@ -89,4 +89,34 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="nga_ip">
+        <item>不修改</item>
+        <item>中国</item>
+        <item>朝鲜</item>
+        <item>乌克兰</item>
+        <item>俄罗斯</item>
+        <item>伊朗</item>
+        <item>叙利亚</item>
+        <item>古巴</item>
+        <item>美国</item>
+        <item>日本</item>
+        <item>韩国</item>
+        <item>乌干达</item>
+    </string-array>
+
+    <string-array name="nga_ip_value">
+        <item>0</item>
+        <item>211.100.9.9</item>
+        <item>175.45.176.2</item>
+        <item>5.53.112.254</item>
+        <item>2.58.124.4</item>
+        <item>31.25.104.9</item>
+        <item>82.97.208.8</item>
+        <item>200.55.176.76</item>
+        <item>1.1.1.1</item>
+        <item>1.0.16.16</item>
+        <item>1.11.1.1</item>
+        <item>41.77.72.27</item>
+    </string-array>
+
 </resources>

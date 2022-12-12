@@ -78,12 +78,19 @@ public class RetrofitHelper {
             if (cookie == null) {
                 cookie = UserManagerImpl.getInstance().getCookie();
             }
-            Request request = original.newBuilder()
-                    .header("Cookie", cookie)
+            String ip = ForumUtils.getAvailableIP();
+            Request.Builder request = original.newBuilder();
+            if (ip.length() > 1) {
+                request.header("X-Forwarded-For", ip);
+                request.header("X-Originating-IP", ip);
+                request.header("X-Remote-Addr", ip);
+                request.header("X-Remote-IP", ip);
+                request.header("Cdn-Src-Ip", ip);
+            }
+            request.header("Cookie", cookie)
                     .header("User-Agent", "Nga_Official/80023")
-                    .method(original.method(), original.body())
-                    .build();
-            return chain.proceed(request);
+                    .method(original.method(), original.body());
+            return chain.proceed(request.build());
         });
         builder.addInterceptor(chain -> {
             Request request = chain.request();
